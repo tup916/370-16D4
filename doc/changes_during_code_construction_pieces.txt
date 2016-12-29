@@ -1,0 +1,6 @@
+Changes to Requirements/Design/Testing after 11/04/16 (Pieces/Team)
+-------------------------------------------------------
+
+-added public method getPiece() to Team for accessing pieces
+-added public field PieceEnum type to Piece, and modified constructor, added get()
+-TeamEnum: removed "TEAM" from each

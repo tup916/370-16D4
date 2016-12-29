@@ -1,0 +1,10 @@
+
+Entry.java
+- add toString()
+
+Log.java
+- teamLog private -> protected, so Logger can access it
+- add getTypeLog(), a helper function for getTeamMovement(), getTeamShooting() and getTeamDamaged(), so I don't need to have 3 similar pieces of code.
+
+Logger.java
+- add displayHelper(), a helper function for displayMovement(), displayShooting() and displayDamaged().

@@ -1,0 +1,44 @@
+Change 1:
+
+The Board class stores an array of Teams, instead of an array of pieces.
+Not a new decision made.
+This was a typographical / inconsistency error in the design document, which is now fixed.
+
+Remove: Piece[] pieces
+Replace: Team[] teams
+
+
+
+Change 2:
+
+Because List is not generic, and is, by default, of type String or int(don't remember), we will
+NOW USE LINKEDLIST
+
+
+Change 3:
+
+Added field: sideLenght of type int - stores either 5 or 7: the side length of the board. Needed for isInBounds method.
+
+
+Change 4:
+HexCoord class: Added a toString() method, needed for Logger.
+
+Change 5: Not using boardBounds anymore. Keeping it commented out, just in case.
+Why? We already have a kickass isInBounds function which takes care of this!
+
+Change 6:
+Hexcoord class: Add toVector function. - a function which puts a coordinate from standard form to a form which involves x,z, and y coordinate and gives the shortest way of getting there from 0,0,0.
+ 
+
+Change 7: No need for relativeToAbsolute and absoluteToRelative (HexCoord) methods.
+don't really know why we need that anymore. 
+
+Change 8: 
+Added a isSameAs() method to HexCoord class.
+
+/**
+Change 9:
+The setCurrentPiece() is private. No other class should ever need it.
+
+Change 10: currentPiece is of type int - offset of the current piece.
+*/

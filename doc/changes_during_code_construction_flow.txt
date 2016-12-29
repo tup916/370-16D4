@@ -1,0 +1,37 @@
+change 1: 
+Settings class: Rename soundVolume to Volume
+-the getters and setters decribed in the class diagram had different names as well
+-name changed for consistency and reduction of redundancy in name
+
+change 2:
+Settings class: Rename method isSavingLogsToDisk() to isSaveLogsToDisk
+-Auto-generated.
+
+change 3: 
+Settings class: Made keyMapping dictionary to public, instead of private
+-allows us to use directly, no getters or setters required.
+
+change 4:
+Settings class: Dictionary generic classes: String, Integer instead of String, int.
+Int is a raw type, needed a wrapper class.
+
+change 5:
+PlayerSettings class:  Dictionary generic classes: Integer, RobotRecord instead of int, RobotRecord.
+Int is a raw type, needed a wrapper class.
+
+change 6:
+clickedButton() accepts a string with the name of the button - bName
+
+change 7:
+EventCatcher class has the following fields:
+Display,
+GameManager,
+MenuManager
++getter and setter methods.
+
+change 8:
+clickedButton() in MenuManager, GameManager class does not return a boolean. returns void.
+
+
+
+

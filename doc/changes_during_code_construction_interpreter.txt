@@ -1,0 +1,17 @@
+Changes to Requirements/Design/Testing after 11/04/16
+-------------------------------------------------------
+
+-The Interpreter class needs three additional methods: sendMessage(), checkMessages(), and receiveMessage().
+-Changed the stacks field of the Interpreter to protected for testing???
+-changed the names of if(), while() and for() to ifBlock(), whileBlock(), and forBlock()
+-Expected result for est condition for whileBlock where finished evaluates to true at first should be that the body of the loop executes exactly once.
+-variable locations pushed to the stack have a '#' character appended to the front
+
+-The interpreter needs a reference to the Team it is associated with.
+
+-Added store() and retrieve() operations for variables
+-added Timers for the loops in order to prevent malicious code from entering infinite loops.
+	-Added forceLoopInterrupt and leaveForBlock fields to help enforce loop safety.
+-Added hitSemicolon field to ensure that the interpreter quits when hitting a semicolon, even if there is code after the semicolon.
+
+-Added isPlayMode field to prevent operations like turn(), shoot() etc from being triggered during initialization.
