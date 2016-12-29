@@ -1,0 +1,41 @@
+50: Remove line 50.
+73: Remove line 73.
+65: Magic number. Replace with piecesPerTeam
+74: Add two fields - small, large board size. final/const
+82: throw run time exception when board size is not 5 or 7.
+61: Bad name. Change team -> numberOfTeams
+69: Initialize each team's hexcoords
+68: Initialize each team.
+50: Bad naming. theDisplay -> display.
+112: Use line breaks.
+159: Add actiontype to allow validity in one function.
+162: turn isvalidMovement to isValidAction for robustness.
+130: Bad naming. Call entryD, 'entryDeparture' and entryA, 'entryArrival'
+215: else: add 'should be done'
+204: change mutation errors. a value changed is again accessed. Ooops.
+275: Change numberEnemiesDefeated to a linked list, to keep track of all the enemies who are destroyed with the attack.
+277: Don't use implementation class on the left side of assignment for list. Replace LinkedList with List.
+303: Bad name. Replace entryS with entryShooter.
+307: Bad name. Replace entryD with entriesInjured.
+314: Use List for entry. Not arrayList. Don't want to specify implementation details on the left side.
+330: Change implementation of getPieceType() to be completely robust - inf uture when 
+340: Remove the function completely: getTeamType
+401: Bad name. Change 'event' to 'eventCoord'
+400: Don't need a hashmap, just a list of piece offsets. Don't care about the hexcoord of the witnesses.
+401: Subsequent changes in the for loop. Need to follow Non-implementation details on the left side fo the code.
+410: A good idea to introduce a method to check visibility range of a piece.
+408: Make this code readable.
+437: 437-440 - replace magic numbers.
+440: include modulus when incrementing.
+451: Modify javadoc comment because of the change.
+454: Add parameter, to make the method more robust. Add int pieceIndex, to return the index of next piece to be played.
+456: Get rid of excess blank lines.
+471: Use full sentences for exception strings.
+467: Add throws in Javadoc.
+474: Bad name - call scanningPiece scanningPieceType.
+468: Allow left side of assignment to have 'List', instead of 'LinkedList'.
+488: Allow left side of assignment to have 'List', instead of 'LinkedList'.
+473: Bad variable name. Change to tempPiece.
+467: Change pieceLocation to scanLocation. Bad variable name.
+467: there exists already a function to figure out PieceEnum. Use that!
+491: 491-500: Don't need the lines. The methods are not needed. Ever.

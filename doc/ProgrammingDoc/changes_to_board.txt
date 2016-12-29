@@ -1,0 +1,30 @@
+Changes to the Board class:
+
+	- Line 50: Remove the comment about the collection of pieces. 
+	- Line 65: Modularity issue. Change the 3 to a variable to remove the magic number. 
+	- Line 75 and 78: Change the magic numbers to variables (constants) to remove the magic numbers.
+	- Line 72: The switch default case should throw an exception. 
+	- Line 61: team parameter should be changed to indicate that it is a number of teams.
+	- Line 65 and 69: The pieceCoords and teams need to be initialized.
+	- Line 162: isValidMovement should not use JOptionPanes. This should be done by the Display component.
+	- Line 118: The movePiece method should not do anything if the movement is not valid. This should be moved to the top of the method and simply return if the movement is invalid.
+	- Line 128: Change the map to a list of integers, which are the offsets of the pieces witnesses of the movement.
+	- Line 134: Change the 3 to the new constant value. 
+	- Line 146: Hard coded 3 to change. 
+	- Line 184: hexIsWithinMovementRange should only need a hexcoord, not an additional piece.
+	- Line 205: The x coordinate value that is being set is then used in the next line. Needs to be resolved to eliminate the area. 
+	- Line 225: The second part of the condition needs to be changed to the include z rather than x. 
+	- Line 277: The number of pieces defeated by the shot needs to be collected within the second inner if statement to collect the number of pieces defeated. 
+	- Line 276: The linked list should be changed to a generic list. 
+	- Line 306: Hard coded 3. 
+	- Line 306 and 324: These lines need to be revised. 
+	- Line 346: Magic 3. 
+	- Line 368: Magic 3.
+	- getPieceType and getTeamType may be removed.
+	- Line 406: Magic 3.
+	- Line 424 and 425: Magic 3s. 
+	- Line 436 and 437: Magic 3s.
+	- Line 434: Validate that the pieces have not already gone and track the round so that parameters can be reset. 
+	- Line 492: Magic 3.
+	- Line 487: scanCurrentArea method duplicates code that already exist within the getPieceType.
+	- Line 532 to 540: Not being used. Remove the comments. 

@@ -1,0 +1,63 @@
+Code Close-reading and Minor Edits - Janelle Nov 25/26
+-----------------------------------------------------
+Board Component:
+
+Board - (We just did a huge code review on this)
+HexCoord - COMMENTS
+
+
+Display Component:
+
+BoardPanel - COMMENTS
+Display - OK
+GameOptionsScreen - OK*
+GameScreen - REMOVED GARBAGE CHARS
+Hexagon - COMMENTS
+HexagonPanel - COMMENTS
+PlayerSelectionScreen - OK*
+ResultsScreen - OK*
+RobotArchiveScreen - TYPO FIXED *
+RobotLabel - OK
+RobotSelectWindow - OK*
+Screen - OK
+ScreenEnum - OK
+SettingScreen - OK*
+TitleScreen - OK*
+TurnTransitionScreen - OK*
+
+
+Flow Component:
+
+EventCatcher - COMMENTS
+GameManager - COMMENTS
+Match - COMMENTS
+MatchOptions - COMMENTS
+MenuManager - REVISED
+PlayerSettings - COMMENTS
+RobotRecord - COMMENTS
+Settings - COMMENTS
+
+
+Interpreter Component:
+
+AI - INCOMPLETE CONSTRUCTOR
+Interpreter - INCOMPLETE CONSTRUCTOR
+Mailbox - OK
+UserVariable - UNCAUGHT EXCEPTION
+UserWord - UNCAUGHT EXCEPTION
+
+
+Logger Component:
+
+Entry - EDITED
+EntryEnum - COMMENTS
+Log - COMMENTS
+Logger - COMMENTS
+
+
+Pieces Component:
+
+Piece - EDITED
+PieceEnum - OK
+Team - COMMENTS
+TeamEnum - OK
