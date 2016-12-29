@@ -1,0 +1,62 @@
+Piece Component Draft 1
+-------------------------------------
+
+=============================
+Team Class
+=============================
+
+Fields:
+	Piece[] pieces
+	bool eliminated
+	TeamEnum colour
+	**NEW FROM LAST DRAFT**
+	Interpreter interpreter
+	Integer activePiece
+	
+Methods:
+	getNextPiece() : Integer 0+ or -1 //-1 means no next piece, all are dead
+	isEliminated() : bool
+	setEliminated() //call this within getNextPiece() if it discovers all robots are dead
+	**NEW FROM LAST DRAFT**
+	getInterpreter() : Interpreter or NULL //if NULL, this is a human player
+	playAI(Integer pieceID) //Signals the interpreter to begin running play() for the given piece; should not be called/does nothing for human player
+	setActivePiece(Integer nextPiece)
+
+=============================
+Piece Class
+=============================
+
+Fields:
+	Integer attack
+	Integer range
+	Integer movement
+	Integer currentMovement
+	Integer health
+	Integer currentHealth
+	bool alive
+	Integer damageDealt
+	Integer damageTaken
+	Integer spacesMoved
+	Integer enemiesDefeated
+	Integer absoluteRotation
+	**NEW FROM LAST DRAFT**
+	bool hasShot
+	
+	
+	
+Methods:
+	getAttack() : Integer 
+	getRange() : Integer 
+	getMovement() : Integer 
+	getCurrentMovement() : Integer 
+	getHealth() : Integer 
+	getCurrentHealth() : Integer 
+	isAlive() : bool
+	getAbsoluteRotation() : Integer
+	getRelativeRotation(Integer direction) : Integer //given an absolute direction, get its relative rotation from this piece's current rotation
+	getAbsoluteRotation(Integer direction) : Integer //given a relative direction from this piece's current rotation, get its absolute rotation
+	rotate(Integer direction) //direction should be between -5 and 5
+	**NEW FROM LAST DRAFT**
+	reset() //gets ready for next turn: enables shooting again and sets currentMovement to be the value of movement
+	shoot() //handles the piece's internal logic for shots (does NOT handle stuff like dealing damage, that's the board), will handle rotation, setting hasShot to true, etc.
+	move (Integer spacesMoved) //handles the piece's internal logic for movement (does NOT handle the actual board position), will handle rotation, setting currentMovement, etc.

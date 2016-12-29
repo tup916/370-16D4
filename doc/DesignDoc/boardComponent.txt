@@ -1,0 +1,89 @@
+Board: Designed to model the board.
+	Fields:
+	- HexCoord[] pieceCoords: Stores the coordinates of the pieces.
+	- HexCoord[] boardBounds: Stores the bounds of the board.
+	- Piece[] pieces: Stores the actual pieces.
+	- PieceEnum currentPiece: Stores the enumeration of the current piece. 
+	- LoggerManager loggerManager: Stores the logger.
+	- Display display: Stores the display.
+	- InterpreterManager interpreterManager: Stores the interpreter manager.
+	Methods:
+	+ Board(Display display, Loggermanager loggerManager, InterpreterManager interpreterManager, Piece[] pieces): Initializes the board.
+		Parameters: display - The display to update with each action.
+				  loggerManager - The logger manager to update with each action.
+				  interpreterManager - The interpreter for which to retrieve information.
+				  pieces - The pieces of the game.
+		Preconditions: Neither of the parameters are null.
+		Postconditions: The board is initialized.
+	+ void movePiece(PieceEnum piece, HexCoord coord): Moves the piece to the specified coordinates.
+		Parameters: piece - The enumeration of the piece to move.
+				  coord - The hex-coordinate to which to move the piece. 
+		Preconditions: The coord is valid and within range of the piece's current mobility points.
+		Postconditions: The specified piece is moved to the specified space.
+	+ void shootSpace(HexCoord coord, PieceEnumeration piece): Shoots the specified space.
+		Parameters: coord - The hex-coordinate of the space to shoot at. 
+				  piece - The enumeration of the piece that is shooting.
+		Preconditions: The shot at space must be within range of the current piece's range points.
+		Postconditions: All piece's occupying the shot at space are damaged by the shooting piece's attack points.
+	+ void nextPiece(): Determines the next piece. 
+		Parameters: None. 
+		Preconditions: The match has not ended.
+		Postconditions: The next piece to play is determined.
+	+ List<HexCoord> scanArea(PieceEnumeration piece, HexCoord coord): Returns a list of coordinates within range of the specified coordinate.
+		Parameters: range - The range of the piece scanning the area and the hex-coordinate from which the scan originates. 
+		Preconditions: The hex-coordinate is valid.
+		Postconditions: The list of coordinates within range of the scan is correctly retrieved.
+	+ List<Piece> scanSpace(HexCoord coord): Returns a list of pieces within the specified space of the specified coordinate.
+		Parameters: coord - The hex-coordinate of the space to scan. 
+		Preconditions: The hex-coordinate is valid.
+		Postconditions: The list of pieces occupying the specified piece is returned.
+	+ HexCoord abosuleToRelative(HexCoord coord): Converts the abosolute coordinate to relative coordinate. 
+		Parameters: coord - The hex-coordinate to convert from absolute positioning to relative positioning. 
+		Preconditions: The hex-coordinate is valid.
+		Postconditions: The hex-coordinate is correctly converted from an absolute position to a relative position.
+	+ HexCoord relativeToAbsolute(HexCoord coord): Converts the relative coordinate to an absolute coordinate.
+		Parameters: coord - The hex-coordinate to convert from relative positioning to absolute positioning. 
+		Preconditions: The hex-coordinate is valid.
+		Postconditions: The hex-coordinate is correctly converted from a relative position to an absolute position.
+	+ bool isInBounds(HexCoord coord): Determines if a hex-coordinate is in bounds.
+		Parameters: coord - The hex-coordinate to check is within the bounds of the board. 
+		Preconditions: None.
+		Postconditions: The hex-coordinate is correctly determined to be valid or invalid.
+	+ enum PieceEnum: The enumeration of the pieces.
+	
+HexCoord: Designed to model a hex-coordinate. 
+	Fields:
+	- int x: The x-coordinate.
+	- int y: The y-coordinate.
+	- int z: The z-coordinate.
+	Methods:
+	- int getX(): Retrieves the x-coordinate.
+		Parameters: None. 
+		Preconditions: None.
+		Postconditions: The x-coordinate is retrieved.
+	- int getY(): Retrieves the y-coordinate.
+		Parameters: None. 
+		Preconditions: None.
+		Postconditions: The y-coordinate is retrieved.
+	- int getZ(): Retrieves the z-coordinate. 
+		Parameters: None. 
+		Preconditions: None.
+		Postconditions: The y-coordinate is retrieved.
+	- int setX(int x): Sets the value of the x-coordinate.
+		Parameters: None. 
+		Preconditions: The x-coordinate is valid.
+		Postconditions: The x-coordinate is set.
+	- int setY(int Y): Sets the value of the y-coordinate.
+		Parameters: None. 
+		Preconditions: The y-coordinate is valid.
+		Postconditions: The y-coordinate is set.
+	- int setZ(int z): Sets the value of the z-coordinate.
+		Parameters: None. 
+		Preconditions: The z-coordinate is valid.
+		Postconditions: The z-coordinate is set.
+	- void reduce(): Reduces the hex-coordinate to its minimal representation.
+		Parameters: None. 
+		Preconditions: None.
+		Postconditions: The hex-coordinate is correctly reduce to its minimal representation.
+		
+NOTES:

@@ -1,0 +1,142 @@
+Interpreter Component
+-----------------------------
+
+
+=======================
+UserVariable Class
+=======================
+//A class to store AI-program-defined variables
+//eg.  variable canShoot;
+Fields:
+	String varName
+	String varValue
+	
+Methods:
+	_constructor_() :UserVariable
+	_constructor_(String name) UserVariable
+	getName() : String
+	setName(String)
+	getValue() : String
+	setValue(String)
+
+=======================
+UserWord Class
+=======================
+//A class to store AI-program-defined words (commands)
+//eg. : double ( i -- i ) 2 * ;
+//Each user-defined word is just a combination of values and built-in commands or previously-established words, so we can replace each word with one or more strings 
+Fields:
+	String wordName
+	List<String> replaceValues
+Methods:
+	_constructor_(String name) : UserWord
+	getName()
+	getReplaceValues() : List<String>
+	setReplaceValues(List<String>)
+	
+
+=======================
+Mailbox Class
+=======================
+//The sender of the message can be appended to the string and split out in code in some way
+//This eliminates the need for additional classes or potential for messages and their recipients to be broken up
+Fields:
+	String[] messages
+	int mailboxSize
+	
+Methods:
+	_constructor_() : Mailbox
+	sendMessage(String) : bool
+	hasMessage(String sender) : bool
+	receiveMessage(String sender) : String
+**NEW TO THIS DRAFT**
+	clear() // empties all messages from the mailbox without doing anything with them
+
+=======================
+AI Class
+=======================	
+String[] fullProgram
+List<String> splitPlayProgram
+List<String> splitInitProgram
+
+Methods:
+	_constructor_(String[] program) //constructor should initialize splitPlayProgram and splitInitProgram from fullProgram
+	getInit() : List<String>
+	getPlay() : List<String>
+	getFull() : String[]
+	stripComments() //remove comments from a line
+	
+=======================
+Interpreter Class
+=======================
+Fields:
+	List<UserWord>[] userWords
+	List<Variable>[] userVars
+	Mailbox[] mailboxes
+	Stack[] stacks
+	AI[] ai
+	Integer currentPiece
+	Integer numberOfPieces
+	?FunctionTable? baseMethods
+	Dictionary<String, Integer> idToIndex //ID would be a string, as specified in the robot language spec ("SNIPER", or for our uses, possibly "SNIPER0" if we implement multiple robots per team)
+	List<Integer> loopIterators
+	List<String> currentInstructions
+	
+Methods:
+
+	_constructor_(Integer numRobots) : Interpreter	//not technically necessary but it lets our game be a bit more modular (more or fewer robots per team if we like)
+
+//Base Operators
+//All of these have no parameters because they interact with the stack and push values to the stack instead of returning a value
+	add()
+	subtract()
+	multiply()
+	divideRemain()
+	and()
+	or()
+	invert()
+	duplicate()
+	drop()
+	swap()
+	rotate()
+	greaterThan()
+	greaterThanEqual()
+	lessThan()
+	lessThanEqual()
+	equal()
+	notEqual()
+	if()
+	while()
+	for()
+	declareVar() //create a new user Variable
+	declareWord() //create a new UserWord
+	random()
+	dotPrint() //print function for debugging
+	
+//Robot Methods
+//All of these are for robots to query and move
+	qHealth()
+	qHealthLeft()
+	qMoves()
+	qMovesLeft()
+	qAttack()
+	qRange()
+	qTeam()
+	qType()
+	turn()
+	move()
+	shoot()
+	check()
+	scan() //Order of robots returned by scan must be the same each time
+	identify()
+	
+//Parsing methods for strings in programs
+	parse(String term) //Determine whether a term is a value (int or string), a base operator, a user-defined variable or user word; operate on it accordingly
+	
+	getIndex(String id) : Integer id
+	
+//Turn handling
+	setCurrentIndex() //Board will call this to set which Piece is active
+	
+**POSSIBLY INCOMPLETE**
+	

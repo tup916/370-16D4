@@ -1,0 +1,108 @@
+=============================================
+=				Logger Component			=
+=============================================
+
+// Logger Class contains logs for all teams.
+// Display on Log Screen according to different team.
+// It needs Scope Class to determine that each team has which entries
+Logger Class
+	Fields:
+	- Log[] players:
+		contains logs of all teams
+
+	Methods:
+	+ displayLog(TeamEnum player): 
+		display all the logs of one team
+
+	+ displayMovement(TeamEnum player)
+		display only the movement logs of one team
+		e.g. Scout moves from (a, b, c) to (x, y, z).
+
+	+ displayShooting(TeamEnum player)
+		display only the shooting logs of one team
+		e.g. Scout shoots (x, y, z), kills Blue Team Scout and damages Green Team Tank (Health: 3 -> 2)! (<- exciting exclamation mark!)
+
+	+ displayDamaged(TeamEnum player)
+		display only the damaged logs of one team
+		e.g. Your Tank get 1 point damage from Red Team
+		e.g. Your Scout is killed by Red Team
+	
+	+ clear()
+		display nothing (i.e. clear everything)	
+
+// Log Class contains logs (entries) for each team.
+Log Class
+	Fields:
+	- List<Entry> teamLog: 
+		stores the logs for each team
+
+	- List<Integer> teamMovement:
+		stores the number indicates the movement
+
+	- List<Integer> teamShooting:
+		stores the number indicates the shooting
+
+	- List<Integer> teamDamaged:
+		stores the number indicates the damaged and killed
+
+	- bool[] isPieceAlive:
+		stores whether each piece is alive or not
+		// 0: Scout; 1: Sniper; 2: Tank
+
+	Methods:
+	+ String getTeamLog():
+		return all logs of this team
+
+	+ String getTeamMovement():
+		return only the movement logs of one team
+
+	+ String getTeamShooting():
+		return only the shooting logs of one team
+
+	+ String getTeamDamaged():
+		return only the damaged logs of one team
+
+	+ bool isGameOver():
+		return whether all of the piece are dead
+	
+// Entry Class handles one entry.
+// It gets information from Board Component. 
+Entry Class
+	Fields:
+	- EntryEnum entryEnum:
+		enumeration of different type of entries:
+		1. movement, 2. shooting, 3. damaged
+
+	- String entry:
+		stores an entry
+
+	Methods:
+	+ void addEntry():
+		handles different types of entries
+		prepares to add into corresponding Log Object
+
+	+ void setMovement(HexCood startLocation, 
+					   HexCood endLocation, 
+					   TeamEnum player, 
+					   PieceEnum robot): 
+		set movement of one robot in one team
+
+	+ String getMovement(int movementIndex):
+		return start and end locations of one robot in one team
+
+	+ void setShooting(HexCood targetLocation, 
+					   TeamEnum player, 
+					   PieceEnum robot):
+		set shooting of one robot in one team
+
+	+ String getShooting(int shootingIndex):
+		return shooting of one robot in one team
+
+	+ void setDamaged(HexCood location,
+					  TeamEnum player,
+					  PieceEnum robot,
+					  int damage):
+		set damage to all the robots on that location
+
+	+ int getDamage(int damagedIndex):
+		return damaged of one robot in one team

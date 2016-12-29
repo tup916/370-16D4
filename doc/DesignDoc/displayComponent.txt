@@ -1,0 +1,139 @@
+# The Display class is designed to model the display component. The class stores an array of all the screens, which can be easily indexed using the ScreenEnum enumeration that is assigned to each of the screens of the Screen class. The public switchToScreen method takes in the enumeration of the screen to switch to and then updates the component to display the specified screen. The private initializer methods are used to initialize the various screens held by the display. The display also provides an accessor to retrieve the game screen to allow easier updating of the game screen.
+Display: Designed to model the display component. 
+	Fields:
+	- screen[] screens: Stores the collection of screens, which can be indexed using an integer or enumeration, depending on the situation. 
+	- ScreenEnum currentScreen: Stores the enumeration of the current screen.
+	Methods:
+	+ DisplayClass(LoggerManager loggerManager): Initializes the display component. 
+		Parameters: loggerManager - The loggerManager that will be used to display the logs of the Players. 
+		Preconditions: The loggerManager is not null.
+		Postconditions: The display component is initialized.
+	+ void switchToScreen(ScreenEnum screenEnum): Updates the display to present the specififed screen.
+		Parameters: sreenEnum - The enum of the desired screen to switch to. 
+		Preconditions: None.
+		Postconditions: The display is updated to present the specified screen.
+	- Screen initializeTitle(): Initializes the title screen.
+		Parameters: None. 
+		Preconditions: None.
+		Postconditions: The title screen is created and stored.
+	- Screen initializePlayerSelection(): Initializes the Player selection screen.
+		Parameters: None. 
+		Preconditions: None.
+		Postconditions: The Player selection screen is created and stored.
+	- Screen initializeOptions(): Initializes the game options screen.
+		Parameters: None. 
+		Preconditions: None.
+		Postconditions: The game options is created and stored.
+	- GameScreen initializeGame(): Initializes the game screen.
+		Parameters: None. 
+		Preconditions: None.
+		Postconditions: The game screen is created and stored.
+	- Screen initializeResult(): Initializes the result screen.
+		Parameters: None. 
+		Preconditions: None.
+		Postconditions: The results screen is created and stored.
+	- Screen initializeRobotArchive(): Initializes the robot archive screen.
+		Parameters: None. 
+		Preconditions: None.
+		Postconditions: The robot archive screen is created and stored.
+	- Screen initializeSettings(): Initializes the settings screen.
+		Parameters: None. 
+		Preconditions: None.
+		Postconditions: The settings screen is created and stored.
+	+ GameScreen getGameScreen() : Retrieves the game screen.
+		Parameters: None. 
+		Preconditions: The game screen has been initialized.
+		Postconditions: The game screen is retrieved.
+	Definitions:
+	+ enum ScreenEnum: An enum to represent the separate screens in the display component, each screen having its own enumeration.
+
+# The Screen class has been designed to model a screen within the system. Each screen will have a specific layout, but the layout will be initialized by the display component. Each screen will be assigned an enumeration that will be stored and for which there is an accessor.
+Screen: Designed to model a screen that can be rotated by the display component.
+	Fields:
+	- ScreenEnum scrEnum: The enumeration assigned to the screen.
+	Methods:
+	+ ScreenClass(ScreenEnum screenEnum): Initializes the screen.
+		Parameters: screenEnum - The enumeration to be assigned to the class. 
+		Preconditions: None.
+		Postconditions: The screen is created and stored.
+	+ ScreenEnum getEnum(): Retrieves the screen's assigned enumeration.
+		Parameters: None. 
+		Preconditions: None.
+		Postconditions: The screen's enumeration is retrieved.
+
+# The GameScreen class inherits from Screen and has been designed to model the game screen. A collection of images will be stored in an array that will be indexed using enumerations where applicable. The x and y offsets of the board will be stored to allow the Player to pan the board. Also, the log screen and the context menu that will be shown to the Player to allow the Player to select their action are be stored.
+GameScreenClass: Designed to model the game screen.
+Inherits from ScreenClass.
+	Fields:
+	- Image[] Images: Stores the collection of images that will be drawn on the game screen.
+	- int boardOffsetX, int boardOffsetY: Reperesents the board offset coordinates for displaying the board.
+	- ScreenClass loggerScreen: The Player's view of the logger. 
+	- ScreenClass contextMenu: The context menu that will appear to allow the Player to 
+	- LoggerManager loggerManager: The logger manager for retrieving logged data.
+	
+	Methods:
+	+ GameScreenClass(ScreenEnum screenEnum): Initializes the game screen.
+		Parameters: screenEnum - The enumeration of the game screen. 
+		Preconditions: None.
+		Postconditions: The game screen is initialized.
+	- void initializeLogScreen(): Initializes the log screen.
+		Parameters: None. 
+		Preconditions: None.
+		Postconditions: The logger screen is initialized.
+	- void initializeSidePanel(): Initializes the side panel.
+		Parameters: None. 
+		Preconditions: None.
+		Postconditions: The side panel is initialized.
+	- void initializePlayerBar(): Initializes the top Player bar.
+		Parameters: None. 
+		Preconditions: None.
+		Postconditions: The Player bar is initialized.
+	- void initializeContextMenu(): Initializes the context menu. 
+		Parameters: None. 
+		Preconditions: None.
+		Postconditions: The context menu is initialized.
+	+ void update(): Updates the display according to current game state.
+		Parameters: None. 
+		Preconditions: None.
+		Postconditions: The game screen is redrawn.
+	+ void movePiece(PieceEnum piece, HexCoord coord): Visually moves the piece.
+		Parameters: piece - The enumeration of the piece to visually move. Matches its image index.
+				  coord - The hex-coordinate to visually move the piece to.
+		Preconditions: The specified hex-coordinate is valid.
+		Postconditions: The specified piece is visually moved to the specified space.
+	+ void shootSpace(HexCoord coord): Visually shoot the space. 
+		Parameters: coord - The hex-coordinate to visually shoot at. 
+		Preconditions: The hex-coordinate is valid.
+		Postconditions: The specified space is visually shot at.
+	+ void switchPlayer(PlayerEnum player, PieceEnum piece): Updates the display to focus on the active Player and piece.
+		Parameters: player - The Player to switch focus to.
+				  piece - The piece to switch focus to. 
+		Preconditions: None.
+		Postconditions: The display is updated to focus on the Player's specified piece.
+	+ void updateLog(PlayerEnum player): Updates the log for the Player.
+		Parameters: player - The Player for which to update the log.. 
+		Preconditions: None.
+		Postconditions: The logger screen is updated.
+	+ void pan(int deltaX, int deltaY): Pans the board by the specified offset amounts.
+		Parameters: deltaX - The change to apply to the offset of the board image's offsets. 
+				  deltaY - The change to apply to the offset of the board image's offsets.
+		Preconditions: The change in the offsets are within the limit.
+		Postconditions: The Player's view is updated to be positioned elsewhere. 
+	+ void showContextMenu(): Shows the context menu the Player will use to make decisions. 
+		Parameters: None. 
+		Preconditions: None.
+		Postconditions: The context menu is displayed.
+	+ void promptEndTurn(): Prompts the Player to confirm they would like to end the game.
+		Parameters: None. 
+		Preconditions: None.
+		Postconditions: The the dialog box prompting the Player to confirm their decision to quit is shown.
+	+ void promptQuit(): Prompts the Player to confirm they would like to quit the game.
+		Parameters: None. 
+		Preconditions: None.
+		Postconditions: The dialog box prompting the Player to confirm their decision to quit is shown.
+	+ void showTransition(): Displays the transition screen.
+		Parameters: None. 
+		Preconditions: None.
+		Postconditions: The transition screen is shown.
+	
+NOTES: 
