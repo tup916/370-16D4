@@ -1,0 +1,42 @@
+User Interfaces - Features
+
+Title Page:
+	Logo: !!!Robo Wars!!!
+	<Play Game>
+	<View Records>
+	<Settings>
+
+Settings:
+	Sound on/off
+	??What else??
+
+Player Selection:
+	Radio buttons for #players
+	Toggle for AI/Human, text field for Human Player Name
+	<Next>
+	<Back>
+	??<Game settings specific to the game>??
+	
+Game settings(Specific to the game):
+	??What goes here??
+
+Game:
+	Top 5 players, active player on the top right
+	exit button top left
+	end turn button top right
+	main play area in the middle
+	history, pan/click, zoom in/out on the left side. (hidden?)
+
+Game over:
+    !!Game Over!!
+    Player 'blah' won!
+    View Results
+    Play again (Same game settings)
+    Go to main menu
+    Exit RoboWars
+    
+Results:
+	ROYGBV
+	Scout Sniper Tank
+	Information about each robot
+	??This is kinda unclear. I would need to look at Janelle's design again??

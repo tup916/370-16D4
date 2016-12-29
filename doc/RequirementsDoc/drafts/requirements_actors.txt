@@ -1,0 +1,25 @@
+CMPT 370 RD - Actors
+
+Host
+The Host is the entity that starts the application and configures matches. It primarily interacts with main menus and takes no action within the game itself. The Host role must be taken by a human who is using the system, and this role will not be taken by any AI or program. There can only be one Host interacting with the system at any one time. The Host's primary methods of interacting with the system are starting new matches, adjusting options for the program, and exiting the program. It is also responsible for confirming the end of a game after a match has completed.
+
+Player
+A Player is a human entity that takes turns within the game system. Once a match has begun, zero or more Players may be present and may act on the system. Since the game is designed as a Hotseat-style application, only one Player may be interacting with the system at any one time. Players have a limited view of the board and are limited in the actions they can perform on the board by their current game state.
+Players can take actions related to their turn when the game system determines that it is their turn. On a turn, they may move a robot if they are capable of doing so, shoot a space with a robot if they are capable of doing so, examine a selected space for additional information, and may signal the system that they are finished by ending their turn. Players are also capable of aborting a match without completing it.
+In addition to these actions which have an effect on the game state, Players may take action that allows them to view information without affecting the game. Players are capable of panning and zooming the map display, in order to view larger maps. They are also able to view or hide a game log, which displays history of moves played to this point (from this Player's perspective).
+If all human Players in a match are eliminated, the last Player to be eliminated will be converted to a Spectator role by the game system.
+
+Spectator
+A Spectator is a human entity that is able to view the game state during a match, but may take no actions that affect the game state. A Spectator may only exist during a match where the only living contestants are AI-controlled teams of Robots. Since the game is designed as a Hotseat-style application, there may only ever be one Spectator interacting with the system at one time.
+Unlike Players, Spectators have an unlimited view of the board and game state. They are able to observe the turns and actions of all Robots and view the map unobstructed, but may not affect the game state with this information. Spectators may abort a match without it running to completion. They also can take all Player actions that have no effect on the game: zooming and panning the map and viewing and hiding the game log. In addition, Spectators may click a button to view statistics about the game.
+
+
+Robot
+A Robot is an AI-controlled entity that takes actions as one of the three types of game pieces within a match. A Robot may act only according to instructions contained in a program that has been downloaded before the game, and can not be controlled by any human entity. Each AI team may contain up to three Robots at one time, and each of these may act according to the same or different sets of instructions.
+A Robot takes action on the game system in a manner similar to a Player, but accomplishes this interaction differently. It sends commands and makes queries of the system, but does not need to view the board in a graphical sense, and so it cannot perform actions like panning and zooming the map. A Robot can take action to move if it is able, and shoot if it is able, as well as query the state of spaces within its vision. A Robot also uses the game system to pass messages to its teammates.
+When a Robot is eliminated from the game, its statistics are tallied and saved. It can take no further action to change the game system.
+
+Robot Librarian
+The Robot Librarian is a separate system that manages Robot records, including the statistics and programs of that Robot. It interacts with the game system in order to provide Robots for use in game, and allows itself to be queried by the game. Its primary role is outside of matches; it provides Robot records to the system just prior to a match, and then receives the result of a completed match in order to save the statistics and update the records of any Robot participants. If a match is aborted without completing, the statistics are not updated and the Robot Librarian does not interface with the system.
+The Robot Librarian is able to take actions that read and write to Robot records. It is able to enumerate all of the records stored and sort them according to various parameters. It is able to download records for the game system to use, and upload updated versions of those records after a match. It is also able to register a new Robot record, revise the record of an existing Robot, and retire a Robot record in order to free up that Robot's name.
+The records that the Robot Librarian handles will be JSON-encoded text.

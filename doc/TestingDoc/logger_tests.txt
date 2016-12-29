@@ -1,0 +1,83 @@
+=============================================
+=		  Logger Component Test Plan     	=
+=============================================
+
+Description:
+	Logger is one of the six components, and it holds textual information of the game progress. Each team has a different logger displayed according to its view scope so far, and the AI has all the loggers to help make intelligent decisions. It can show movement, shooting and damaged information separatedly, so the user has the freedom to choose only to display the part of information he or she is interested in, or all of them or none of them. 
+
+Significance:
+	Logger is not very important to every user. Some poeple like to analyze playing history to learn from their lessons, then Logger can help with this. To other people, logger records the game process, and it is the place to check the damaged interactions between teams, the movements of the pieces in the team and if you can continue to play.
+
+// We test Entry Class first since it is the base
+Entry Class
+	addEntry():
+		- 1 test for movement, compare entry field with expected string
+		- 1 test for shooting, compare entry field with expected string 
+		- 1 test for damaged, compare entry field with expected string
+
+	setMovement(): 
+	getMovement():
+		- 2 tests for this setter and getter
+		  check if the returned string from getter is right 
+		  (expected: start and end locations of one robot in one team)
+		  (e.g. Scout moves from (a, b, c) to (x, y, z). )
+
+	setShooting():
+	getShooting():
+		- 2 tests for this setter and getter
+		  check if the returned string from getter is right 
+		  (expected: shooting of one robot in one team)
+		  (e.g. Scout shoots (x, y, z), kills Blue Team Scout and damages Green Team Tank (Health: 3 -> 2)! )
+
+	setDamaged():
+	getDamage():
+		- 2 tests for this setter and getter
+		  check if the returned string from getter is right 
+		  (expected: damaged of one robot in one team)
+		  (e.g. Your Tank get 1 point damage from Red Team. )
+		  (e.g. Your Scout is killed by Red Team. )
+
+
+// Then we test Log Class that contains entries for each team
+Log Class
+	getTeamLog():
+		- 2 tests to check if the returned string is right 
+		  (expected: all logs of this team)
+
+	getTeamMovement():
+		- 2 tests to check if the returned string is right 
+		  (expected: oonly the movement logs of one team)
+
+	getTeamShooting():
+		- 2 tests to check if the returned string is right 
+		  (expected: only the shooting logs of one team)
+
+	getTeamDamaged():
+		- 2 tests to check if the returned string is right 
+		  (expected: only the damaged logs of one team)
+
+	isGameOver():
+		- 1 test for all three indexs in the isPieceAlive array is false, which should return true
+		- 1 test for at least one index in the isPieceAlive array is true, which should return false
+
+
+// Last we test Logger Class that contains logs for all teams.
+Logger Class
+	displayLog(): 
+		- 2 tests for two arbitrary teams
+		  (expected: display all the logs of one team)
+
+	displayMovement()
+		- 2 tests for two teams
+		  (expected: display only the movement logs of one team)
+
+	displayShooting()
+		- 2 tests for two teams other than those in tests for displayMovement()
+		  (expected: display only the shooting logs of one team)
+
+	displayDamaged(TeamEnum player)
+		- 2 tests for two teams other than those in tests for displayMovement() and displayShooting()
+		  (expected: display only the damaged logs of one team)
+	
+	clear()
+		- 1 test for if it can display an empty string

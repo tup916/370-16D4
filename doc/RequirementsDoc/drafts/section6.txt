@@ -1,0 +1,19 @@
+Overview
+
+In addition to the functional requirements above, this project has several data, hardware and software requirements that must be considered.
+
+Data Requirements
+
+Robot records must conform to a standardized format, so that users may download external Robot records from other sources and integrate them into the program if desired. The Robot records will be stored as JSON-encoded text files (.json). Each will contain a Robot's statistics and identifier (name and team), as well as the AI program that the Robot will run during its matches. The software must be able to load these files from disk and parse them so that they may be used within the game.
+
+
+Hardware Requirements
+
+This project is designed to run on Windows machines which are running the Windows 7 64-bit operating system. This means that the target machines should be equipped with at least a 1 gigahertz (GHz) processor, 2 gigabytes (GB) of RAM and graphics hardware that supports DirectX 9.
+
+This project also requires that the user has mouse and keyboard peripherals connected to the machine, and that the keyboard is using a QWERTY configuration.
+
+
+Software Requirements
+
+This project will be constructed using the Java language, version 1.8.0_101. The user must have Java version 1.8.0_101 installed on the machine in order to run the application.
