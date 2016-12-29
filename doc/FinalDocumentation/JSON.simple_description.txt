@@ -1,0 +1,13 @@
+doc for the programmer - external libraries you rely on
+
+- JSON.simple
+JSON.simple is used as an external Java library for processing JSON in this project. The library file is named as json-simple-1.1.1.jar and it is located at the "Referenced Libraries" folder. This is mainly used in the RecordLoader.java in the "robowars.flow" package to read/update/parse robot information which is in the "resources/ExampleRobots" folder. There is a detailed wiki page on Google Code: https://code.google.com/archive/p/json-simple/wikis.
+
+= Main packages: "org.json.simple" and "org.json.simple.parser".
+- First, every *.jsn file will be read from normal Java FileReader, then it will be converted to JSONObject by JSONParser. JSONObject is a special class inherited from java.util.HashMap, so it is also a key-value pair data structure and has the methods that HashMap has. In this case, all the *.jsn files are starting with "script" key, so just get the value of "script" key as main JSONObject for later usage.
+- Different attributes (team, name and class) and statistics (matches, wins, losses, executions, lived, died, absorbed, killed and moved) are separated from that main JSONObject. In addition, the value of "code" key for the interpreter is specially handled as JSONArray since it contains an array of strings. JSONArray is inherited from java.util.ArrayList, so it has methods that inherited from AbstractList, ArrayList, List and so on.
+
+= Basic usages: Parse/Read/Update JSON.
+- Parse: use parser.parse(FileReader)
+- Read: use JSONObject.get(key)
+- Update: use JSONObject.put(key, new_value)
